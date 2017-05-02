@@ -20,6 +20,16 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    // MARK Outlets
+    @IBOutlet weak var textField: UILabel!
+    
+    // MARK Actions
+    @IBAction func TouchButton(_ sender: UIButton) {
+       
+        print("touch button \(sender.tag)")
+        
+        textField.text = "\(sender.tag)"
+    }
 
 }
 
