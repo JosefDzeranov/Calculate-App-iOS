@@ -25,10 +25,16 @@ class ViewController: UIViewController {
     
     // MARK Actions
     @IBAction func TouchButton(_ sender: UIButton) {
-       
+        
         print("touch button \(sender.tag)")
         
+        //button "C" - clear textField
+        if sender.tag == -1 {
+            textField.text = ""
+        }
+        else {
         textField.text = "\(sender.tag)"
+        }
     }
 
 }
