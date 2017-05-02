@@ -33,7 +33,7 @@ class ViewController: UIViewController {
             textField.text = ""
         }
         else {
-        textField.text = "\(sender.tag)"
+            textField.text = textField.text!  +  "\(sender.currentTitle!)"
         }
     }
 
