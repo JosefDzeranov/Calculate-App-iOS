@@ -43,24 +43,44 @@ class ViewController: UIViewController {
             let typeButton:String = sender.currentTitle!
             textField.text = textField.text!  +  "\(typeButton)"
             switch typeButton {
-            case "*", "/", "+", "-":
+            case "x", "/", "+", "-":
                 digits.append(Int(temp)!)
                 operators.append(typeButton)
                 temp.removeAll()
             case "=":
                 digits.append(Int(temp)!)
-                ExecuteOperations()
+                let resultOperation:Int = ExecuteOperations()
+                textField.text = textField.text!  +  "\(resultOperation)"
+                
             default:
                 temp = temp + typeButton
             }
-            print(temp)
-            print(digits)
-            print(operators)
         }
+        print(temp)
+        print("digits сontains \(digits)")
+        print("Operators contains \(operators)")
+        
     }
     
-    func ExecuteOperations()-> String{
-        
+    func ExecuteOperations()-> Int{
+        var previosResult:Int = digits[0]
+        let countElementsCounts = digits.count
+        for index in 1 ..< countElementsCounts{
+            print(index)
+            let operation : String = operators[index-1]
+            let operand : Int = digits[index]
+            switch operation {
+            case "+":
+                previosResult += operand
+            case "-":
+                previosResult -= operand
+            case "x":
+                previosResult *= operand
+            default:
+                previosResult /= operand
+            }
+        }
+        return previosResult
     }
 
 }
