@@ -179,6 +179,9 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
                                 <state key="normal" title="Save "/>
+                                <connections>
+                                    <action selector="SaveData:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iKc-R1-WdZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCf-b1-M4h">
                                 <rect key="frame" x="32" y="9" width="50" height="30"/>

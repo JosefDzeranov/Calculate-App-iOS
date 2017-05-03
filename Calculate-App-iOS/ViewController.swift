@@ -61,6 +61,9 @@ class ViewController: UIViewController {
         print("Operators contains \(operators)")
         
     }
+    @IBAction func SaveData(_ sender: Any) {
+        print(GetDate())
+    }
     
     func ExecuteOperations()-> Int{
         var previosResult:Int = digits[0]
@@ -81,6 +84,10 @@ class ViewController: UIViewController {
             }
         }
         return previosResult
+    }
+    func GetDate()->String{
+        let date = Date().timeIntervalSince1970
+        return String(date)
     }
     
     func SaveDataToLocalStorage(value: String, keyValue: String)-> (){
