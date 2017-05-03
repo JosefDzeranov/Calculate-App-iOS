@@ -10,13 +10,14 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var digits:[Int]!, operators:[String]!, temp:String!
+    var digits:[Int]!, operators:[String]!, temp:String!, key:Int!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         digits = [Int]()
         operators = [String]()
         temp = String()
+        key = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -62,8 +63,10 @@ class ViewController: UIViewController {
         
     }
     @IBAction func SaveData(_ sender: Any) {
-        SaveDataToLocalStorage(value: textField.text!, keyValue: GetDate())
-        print("Saved data of this kind: \(GetDate()) - \(textField.text!) ")
+        
+        SaveDataToLocalStorage(value: textField.text!, keyValue: String(key))
+        print("Saved data of this kind: \(key) - \(textField.text!) ")
+        key = key + 1
     }
     
     func ExecuteOperations()-> Int{
@@ -90,7 +93,6 @@ class ViewController: UIViewController {
         let date = Date().timeIntervalSince1970
         return String(date)
     }
-    
     func SaveDataToLocalStorage(value: String, keyValue: String)-> (){
         let defaults = UserDefaults.standard
         defaults.set(value, forKey: keyValue)

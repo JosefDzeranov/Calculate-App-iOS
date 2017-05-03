@@ -15,6 +15,7 @@
 		C60E46CD1EB87F7100CAF949 /* Calculate_App_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60E46CC1EB87F7100CAF949 /* Calculate_App_iOSTests.swift */; };
 		C60E46D81EB87F7100CAF949 /* Calculate_App_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60E46D71EB87F7100CAF949 /* Calculate_App_iOSUITests.swift */; };
 		C636DB2F1EB9E8E10096CD67 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C636DB2E1EB9E8E10096CD67 /* HistoryTableViewController.swift */; };
+		C636DB321EB9FD670096CD67 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = C636DB311EB9FD670096CD67 /* ModelData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		C60E46D71EB87F7100CAF949 /* Calculate_App_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate_App_iOSUITests.swift; sourceTree = "<group>"; };
 		C60E46D91EB87F7100CAF949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C636DB2E1EB9E8E10096CD67 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		C636DB311EB9FD670096CD67 /* ModelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 		C60E46B61EB87F7100CAF949 /* Calculate-App-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				C636DB301EB9FBE60096CD67 /* Models */,
 				C60E46B71EB87F7100CAF949 /* AppDelegate.swift */,
 				C60E46B91EB87F7100CAF949 /* ViewController.swift */,
 				C60E46BB1EB87F7100CAF949 /* Main.storyboard */,
@@ -126,6 +129,14 @@
 				C60E46D91EB87F7100CAF949 /* Info.plist */,
 			);
 			path = "Calculate-App-iOSUITests";
+			sourceTree = "<group>";
+		};
+		C636DB301EB9FBE60096CD67 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				C636DB311EB9FD670096CD67 /* ModelData.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C636DB2F1EB9E8E10096CD67 /* HistoryTableViewController.swift in Sources */,
+				C636DB321EB9FD670096CD67 /* ModelData.swift in Sources */,
 				C60E46BA1EB87F7100CAF949 /* ViewController.swift in Sources */,
 				C60E46B81EB87F7100CAF949 /* AppDelegate.swift in Sources */,
 			);
