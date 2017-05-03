@@ -14,6 +14,7 @@
 		C60E46C21EB87F7100CAF949 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C60E46C01EB87F7100CAF949 /* LaunchScreen.storyboard */; };
 		C60E46CD1EB87F7100CAF949 /* Calculate_App_iOSTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60E46CC1EB87F7100CAF949 /* Calculate_App_iOSTests.swift */; };
 		C60E46D81EB87F7100CAF949 /* Calculate_App_iOSUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60E46D71EB87F7100CAF949 /* Calculate_App_iOSUITests.swift */; };
+		C636DB2F1EB9E8E10096CD67 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C636DB2E1EB9E8E10096CD67 /* HistoryTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		C60E46D31EB87F7100CAF949 /* Calculate-App-iOSUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Calculate-App-iOSUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C60E46D71EB87F7100CAF949 /* Calculate_App_iOSUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Calculate_App_iOSUITests.swift; sourceTree = "<group>"; };
 		C60E46D91EB87F7100CAF949 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C636DB2E1EB9E8E10096CD67 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				C60E46BE1EB87F7100CAF949 /* Assets.xcassets */,
 				C60E46C01EB87F7100CAF949 /* LaunchScreen.storyboard */,
 				C60E46C31EB87F7100CAF949 /* Info.plist */,
+				C636DB2E1EB9E8E10096CD67 /* HistoryTableViewController.swift */,
 			);
 			path = "Calculate-App-iOS";
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C636DB2F1EB9E8E10096CD67 /* HistoryTableViewController.swift in Sources */,
 				C60E46BA1EB87F7100CAF949 /* ViewController.swift in Sources */,
 				C60E46B81EB87F7100CAF949 /* AppDelegate.swift in Sources */,
 			);
@@ -514,6 +518,7 @@
 				C60E46DE1EB87F7100CAF949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C60E46DF1EB87F7100CAF949 /* Build configuration list for PBXNativeTarget "Calculate-App-iOSTests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +527,7 @@
 				C60E46E11EB87F7100CAF949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C60E46E21EB87F7100CAF949 /* Build configuration list for PBXNativeTarget "Calculate-App-iOSUITests" */ = {
 			isa = XCConfigurationList;
@@ -530,6 +536,7 @@
 				C60E46E41EB87F7100CAF949 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

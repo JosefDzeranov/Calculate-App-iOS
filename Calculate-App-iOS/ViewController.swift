@@ -82,6 +82,12 @@ class ViewController: UIViewController {
         }
         return previosResult
     }
+    
+    func SaveDataToLocalStorage(value: String, keyValue: String)-> (){
+        let defaults = UserDefaults.standard
+        defaults.set(value, forKey: keyValue)
+        return
+    }
 
 }
 
