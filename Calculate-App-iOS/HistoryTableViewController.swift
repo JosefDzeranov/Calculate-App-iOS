@@ -20,6 +20,11 @@ class HistoryTableViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -29,29 +34,24 @@ class HistoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        //return DataCountElements()
         return 5
-        
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-        print("go to this")
-        cell.textLabel?.text = "Testing"
-        // Configure the cell..
+        let identifier = "HistoryTableViewCell"
+        //let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
+        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? HistoryTableViewCell
+            else {
+            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
+        }
+        cell.LabelField.text = "Test"
+
         return cell
     }
     
-    func GetDataFromLocalStorage(for key: String)-> (String?){
-        let defaults = UserDefaults.standard
-        return defaults.string(forKey: key)
-    }
-    func DataCountElements()->(Int){
-        let defaults = UserDefaults.standard
-       return defaults.dictionaryRepresentation().count
-    }
-    
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
