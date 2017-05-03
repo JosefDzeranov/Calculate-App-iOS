@@ -10,9 +10,13 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    var digits:[Int]!, operators:[String]!, temp:String!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        digits = [Int]()
+        operators = [String]()
+        temp = String()
     }
 
     override func didReceiveMemoryWarning() {
@@ -31,10 +35,32 @@ class ViewController: UIViewController {
         //button "C" - clear textField
         if sender.tag == -1 {
             textField.text = ""
+            digits.removeAll()
+            operators.removeAll()
+            temp.removeAll()
         }
         else {
-            textField.text = textField.text!  +  "\(sender.currentTitle!)"
+            let typeButton:String = sender.currentTitle!
+            textField.text = textField.text!  +  "\(typeButton)"
+            switch typeButton {
+            case "*", "/", "+", "-":
+                digits.append(Int(temp)!)
+                operators.append(typeButton)
+                temp.removeAll()
+            case "=":
+                digits.append(Int(temp)!)
+                ExecuteOperations()
+            default:
+                temp = temp + typeButton
+            }
+            print(temp)
+            print(digits)
+            print(operators)
         }
+    }
+    
+    func ExecuteOperations()-> String{
+        
     }
 
 }
