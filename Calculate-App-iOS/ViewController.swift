@@ -62,7 +62,8 @@ class ViewController: UIViewController {
         
     }
     @IBAction func SaveData(_ sender: Any) {
-        print(GetDate())
+        SaveDataToLocalStorage(value: textField.text!, keyValue: GetDate())
+        print("Saved data of this kind: \(GetDate()) - \(textField.text!) ")
     }
     
     func ExecuteOperations()-> Int{
