@@ -83,9 +83,10 @@ class ViewController: UIViewController {
         print("Operators contains \(operators)")
         
     }
+    
     @IBAction func SaveData(_ sender: Any) {
-        let defaultsKey = "DataSource"
-        SaveDataToLocalStorage(value: textField.text!, keyValue: defaultsKey)
+        
+        SaveDataToLocalStorage(value: textField.text!)
     }
     
     func ExecuteOperations()-> Int {
@@ -115,37 +116,27 @@ class ViewController: UIViewController {
         return date
     }
     
-    func SaveDataToLocalStorage(value: String, keyValue: String)-> (){
+    func SaveDataToLocalStorage(value: String)-> (){
+        
+        let defaultKeyDate = "date", defaultKeyText =  "text"
         
         let defaults = UserDefaults.standard
         
-//        defaults.removeObject(forKey: keyValue)
+        let arrayText = defaults.object(forKey: defaultKeyText)
+        print("ArrayData return value ->", arrayText ?? "nil")
         
-        let arrayData = defaults.object(forKey: keyValue)
-        
-        print("ArrayData return value ->", arrayData ?? "nil")
-        
-        if let array = arrayData as? [DataCalculator] {
+        if var array = arrayText as? [String] {
             debugPrint("array: ", array)
+            array.append(value)
+            
+            defaults.set(array, forKey: defaultKeyText)
+            defaults.synchronize()
         }
-        
-        
-        let element: DataCalculator = DataCalculator(date: GetDate().timeIntervalSince1970, text: value)
-        print("Create new element ->", element)
-        
-        if arrayData == nil {
-            var array = [DataCalculator]()
-            array.append(element)
-            let encodedData = NSKeyedArchiver.archivedData(withRootObject: array)
-            defaults.set(encodedData, forKey: keyValue)
-        }
-            /*
         else {
-            var arrayStruct = arrayData  as? [DataCalculator]
-            arrayStruct?.append(element)
-            defaults.set(arrayStruct, forKey: keyValue)
+            print ("else ")
+            
         }
- */
+       
     }
     
     
