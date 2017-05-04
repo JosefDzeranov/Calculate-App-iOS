@@ -2,7 +2,7 @@
 //  HistoryTableViewController.swift
 //  Calculate-App-iOS
 //
-//  Created by Иосиф Дзеранов on 03/05/2017.
+//  Created by Иосиф Дзеранов on 04/05/2017.
 //  Copyright © 2017 Иосиф Дзеранов. All rights reserved.
 //
 
@@ -18,7 +18,20 @@ class HistoryTableViewController: UITableViewController {
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
-    }
+        
+        /*var dict = [String: Any]()
+        dict["1"] = 63784
+        dict["2"] = 374958
+        dict["0"] = 6345
+        dict["8"] = 3894
+        let keysArray = Array(dict.keys)
+        debugPrint("Keys Array -> ", keysArray)
+        
+        let valuesArray = Array(dict.values)
+        debugPrint("Values Array -> ", valuesArray)
+         
+ */
+ }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -34,23 +47,20 @@ class HistoryTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 5
+        return DataCountElements()
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let identifier = "HistoryTableViewCell"
-        //let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath) as? HistoryTableViewCell
-            else {
-            fatalError("The dequeued cell is not an instance of MealTableViewCell.")
-        }
-        cell.LabelField.text = "Test"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
 
+        // Configure the cell...
+        
+        cell.textLabel?.text = "Test"
+        cell.detailTextLabel?.text = "Detail"
         return cell
     }
-    
+
 
     /*
     // Override to support conditional editing of the table view.
@@ -86,7 +96,6 @@ class HistoryTableViewController: UITableViewController {
         return true
     }
     */
-
     /*
     // MARK: - Navigation
 
@@ -96,5 +105,14 @@ class HistoryTableViewController: UITableViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    func GetDataFromLocalStorage(for key: String)-> (String?){
+                let defaults = UserDefaults.standard
+                return defaults.string(forKey: key)
+            }
+    func DataCountElements()->(Int){
+                let defaults = UserDefaults.standard
+                return defaults.dictionaryRepresentation().count
+            }
 
 }
