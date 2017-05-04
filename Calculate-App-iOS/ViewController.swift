@@ -8,23 +8,44 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DataCalculator: NSObject, NSCoding {
+    var date : Double
+    var text: String
+    
+    init(date: Double, text: String) {
+        self.date = date
+        self.text = text
+    }
+    
+    required convenience init(coder decoder: NSCoder) {
+        let text = decoder.decodeObject(forKey: "text") as! String
+        let date = decoder.decodeObject(forKey: "name") as! Double
+        self.init(date: date, text: text)
+    }
+    
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(date, forKey: "date")
+        aCoder.encode(text, forKey: "text")
+    }
+}
 
-    var digits:[Int]!, operators:[String]!, temp:String!, key:Int!
+
+class ViewController: UIViewController {
+    
+    var digits:[Int]!, operators:[String]!, temp:String!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         digits = [Int]()
         operators = [String]()
         temp = String()
-        key = 0
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     // MARK Outlets
     @IBOutlet weak var textField: UILabel!
     
@@ -63,13 +84,11 @@ class ViewController: UIViewController {
         
     }
     @IBAction func SaveData(_ sender: Any) {
-        
-        SaveDataToLocalStorage(value: textField.text!, keyValue: String(key))
-        print("Saved data of this kind: \(key) - \(textField.text!) ")
-        key = key + 1
+        let defaultsKey = "DataSource"
+        SaveDataToLocalStorage(value: textField.text!, keyValue: defaultsKey)
     }
     
-    func ExecuteOperations()-> Int{
+    func ExecuteOperations()-> Int {
         var previosResult:Int = digits[0]
         let countElementsCounts = digits.count
         for index in 1 ..< countElementsCounts{
@@ -89,15 +108,48 @@ class ViewController: UIViewController {
         }
         return previosResult
     }
-    func GetDate()->String{
-        let date = Date().timeIntervalSince1970
-        return String(date)
+  
+    func GetDate()->Date{
+        let date = Date()
+        print("Get date today ->", date)
+        return date
     }
+    
     func SaveDataToLocalStorage(value: String, keyValue: String)-> (){
+        
         let defaults = UserDefaults.standard
-        defaults.set(value, forKey: keyValue)
-        return
+        
+//        defaults.removeObject(forKey: keyValue)
+        
+        let arrayData = defaults.object(forKey: keyValue)
+        
+        print("ArrayData return value ->", arrayData ?? "nil")
+        
+        if let array = arrayData as? [DataCalculator] {
+            debugPrint("array: ", array)
+        }
+        
+        
+        let element: DataCalculator = DataCalculator(date: GetDate().timeIntervalSince1970, text: value)
+        print("Create new element ->", element)
+        
+        if arrayData == nil {
+            var array = [DataCalculator]()
+            array.append(element)
+            let encodedData = NSKeyedArchiver.archivedData(withRootObject: array)
+            defaults.set(encodedData, forKey: keyValue)
+        }
+            /*
+        else {
+            var arrayStruct = arrayData  as? [DataCalculator]
+            arrayStruct?.append(element)
+            defaults.set(arrayStruct, forKey: keyValue)
+        }
+ */
     }
-
+    
+    
+    
+    
 }
 
