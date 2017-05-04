@@ -112,7 +112,7 @@ class HistoryTableViewController: UITableViewController {
             }
     func DataCountElements()->(Int){
                 let defaults = UserDefaults.standard
-                return defaults.dictionaryRepresentation().count
+                return defaults.array(forKey: "text")!.count
             }
 
 }

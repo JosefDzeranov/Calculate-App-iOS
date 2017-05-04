@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+/*
 class DataCalculator: NSObject, NSCoding {
     var date : Double
     var text: String
@@ -28,7 +28,7 @@ class DataCalculator: NSObject, NSCoding {
         aCoder.encode(text, forKey: "text")
     }
 }
-
+*/
 
 class ViewController: UIViewController {
     
@@ -87,6 +87,7 @@ class ViewController: UIViewController {
     @IBAction func SaveData(_ sender: Any) {
         
         SaveDataToLocalStorage(value: textField.text!)
+        textField.text = String()
     }
     
     func ExecuteOperations()-> Int {
@@ -133,8 +134,10 @@ class ViewController: UIViewController {
             defaults.synchronize()
         }
         else {
-            print ("else ")
-            
+            var newArray = [String]()
+            newArray.append(value)
+            defaults.set(newArray, forKey: defaultKeyText)
+            defaults.synchronize()
         }
        
     }
