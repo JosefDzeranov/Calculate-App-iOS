@@ -218,7 +218,7 @@
         <!--History Table View Controller-->
         <scene sceneID="Uon-k4-Wzq">
             <objects>
-                <tableViewController storyboardIdentifier="HistoryTableViewController" id="Py1-HD-8Vf" customClass="HistoryTableViewController" customModule="Calculate_App_iOS" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="HistoryTableViewController" automaticallyAdjustsScrollViewInsets="NO" id="Py1-HD-8Vf" customClass="HistoryTableViewController" customModule="Calculate_App_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ViewTable" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="GvU-bM-HJM">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
