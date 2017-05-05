@@ -39,7 +39,8 @@ class ViewController: UIViewController {
         digits = [Int]()
         operators = [String]()
         temp = String()
-    }
+        
+}
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

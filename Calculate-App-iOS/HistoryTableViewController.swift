@@ -56,9 +56,11 @@ class HistoryTableViewController: UITableViewController {
 
         // Configure the cell...
         
+        let text = GetDataFromLocalStorage(forKey: "text")[indexPath.row]
         
-        cell.textLabel?.text = "Test"
-        cell.detailTextLabel?.text = "Detail"
+        print("Show \(text) in \(indexPath.row) row")
+        cell.textLabel?.text = text
+        cell.detailTextLabel?.text = "DetailDefaults"
         return cell
     }
 
@@ -107,13 +109,21 @@ class HistoryTableViewController: UITableViewController {
     }
     */
     
-    func GetDataFromLocalStorage(for key: String)-> ([String]){
+    func GetDataFromLocalStorage(forKey key: String)-> ([String]){
                 let defaults = UserDefaults.standard
                 return (defaults.array(forKey: key)! as? [String])!
             }
     func DataCountElements()->(Int){
                 let defaults = UserDefaults.standard
-                return defaults.array(forKey: "text")!.count
+                let array  = defaults.object(forKey: "text")
+                if let arrayText = array as? [String] {
+                    print("array ->", arrayText)
+                    
+                    return arrayText.count
+                }
+                else {
+                    return 0
+                }
             }
 
 }
