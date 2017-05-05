@@ -86,8 +86,11 @@ class ViewController: UIViewController {
     }
     
     @IBAction func SaveData(_ sender: Any) {
+         let defaultKeyDate = "date", defaultKeyText =  "text"
+        SaveDataToLocalStorage(forKey: defaultKeyText, value: textField.text!)
         
-        SaveDataToLocalStorage(value: textField.text!)
+        SaveDataToLocalStorage(forKey: defaultKeyDate, value: date)
+        
         textField.text = String()
     }
     
@@ -112,38 +115,43 @@ class ViewController: UIViewController {
         return previosResult
     }
   
-    func GetDate()->Date{
-        let date = Date()
-        print("Get date today ->", date)
-        return date
+    func GetDate() -> String{
+        
+        let currentDateTime = Date()
+        
+        // initialize the date formatter and set the style
+        let formatter = DateFormatter()
+        formatter.timeStyle = .medium
+        formatter.dateStyle = .long
+        
+        // get the date time String from the date object
+       return formatter.string(from: currentDateTime) // May 5, 2017 at 11:26:53 PM
     }
     
-    func SaveDataToLocalStorage(value: String)-> (){
-        
-        let defaultKeyDate = "date", defaultKeyText =  "text"
+    func SaveDataToLocalStorage(forKey key : String, value: String)-> (){
         
         let defaults = UserDefaults.standard
         
-        let arrayText = defaults.object(forKey: defaultKeyText)
-        print("ArrayData return value ->", arrayText ?? "nil")
+        let arrayValue = defaults.object(forKey: key)
+        print("ArrayData return value ->", arrayValue ?? "nil")
         
-        if var array = arrayText as? [String] {
+        if var array = arrayValue as? [String] {
             debugPrint("array: ", array)
             array.append(value)
             
-            defaults.set(array, forKey: defaultKeyText)
+            defaults.set(array, forKey: key)
             defaults.synchronize()
         }
         else {
             var newArray = [String]()
             newArray.append(value)
-            defaults.set(newArray, forKey: defaultKeyText)
+            defaults.set(newArray, forKey: key)
             defaults.synchronize()
         }
        
     }
     
-    
+   
     
     
 }
