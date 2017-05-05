@@ -39,7 +39,11 @@ class ViewController: UIViewController {
         digits = [Int]()
         operators = [String]()
         temp = String()
-        
+       
+        /* for delete data
+        let defaults = UserDefaults.standard
+        defaults.removeObject(forKey: "text")
+         */
 }
     
     override func didReceiveMemoryWarning() {
@@ -86,12 +90,18 @@ class ViewController: UIViewController {
     }
     
     @IBAction func SaveData(_ sender: Any) {
-         let defaultKeyDate = "date", defaultKeyText =  "text"
+        
+        let defaultKeyDate = "date", defaultKeyText =  "text"
+        
         SaveDataToLocalStorage(forKey: defaultKeyText, value: textField.text!)
         
-        SaveDataToLocalStorage(forKey: defaultKeyDate, value: date)
+        SaveDataToLocalStorage(forKey: defaultKeyDate, value: GetDate())
         
         textField.text = String()
+        digits = [Int]()
+        operators = [String]()
+        temp = String()
+        
     }
     
     func ExecuteOperations()-> Int {
@@ -130,13 +140,15 @@ class ViewController: UIViewController {
     
     func SaveDataToLocalStorage(forKey key : String, value: String)-> (){
         
+        print("Saving new element \(key) - \(value)")
+        
         let defaults = UserDefaults.standard
         
         let arrayValue = defaults.object(forKey: key)
         print("ArrayData return value ->", arrayValue ?? "nil")
         
         if var array = arrayValue as? [String] {
-            debugPrint("array: ", array)
+            
             array.append(value)
             
             defaults.set(array, forKey: key)

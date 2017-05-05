@@ -58,9 +58,13 @@ class HistoryTableViewController: UITableViewController {
         
         let text = GetDataFromLocalStorage(forKey: "text")[indexPath.row]
         
+        let date = GetDataFromLocalStorage(forKey: "date")[indexPath.row]
+        
         print("Show \(text) in \(indexPath.row) row")
+        print("Show \(date) in \(indexPath.row) row")
+        
         cell.textLabel?.text = text
-        cell.detailTextLabel?.text = "DetailDefaults"
+        cell.detailTextLabel?.text = date
         return cell
     }
 
