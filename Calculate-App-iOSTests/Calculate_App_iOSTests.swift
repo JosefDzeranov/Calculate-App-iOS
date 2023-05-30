@@ -34,3 +34,5 @@ class Calculate_App_iOSTests: XCTestCase {
     }
     
 }
+
+//Сделал какие-то изменения и отправил Иосифу на ревью)
